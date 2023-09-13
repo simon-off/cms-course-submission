@@ -1,0 +1,19 @@
+﻿@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ArticlePage>
+
+@{
+    var image = Model.Value<IPublishedContent>("articleImage");
+}
+
+<a href="@Model.Url()">
+  <article>
+    <div class="date">
+      <span>25</span><br />
+      Mar
+    </div>
+    <img src="@image.Url()" alt="Happy woman in office" />
+    <p class="tag">Business</p>
+    <h4>@Model.Value("articleTitle")</h4>
+    <p>@Model.Value("articleBody")</p>
+  </article>
+</a>

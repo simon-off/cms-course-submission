@@ -1,0 +1,12 @@
+﻿@using Umbraco.Cms.Core.Models
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+<section class="home-section-partners container">
+    @{
+        var typedMultiMediaPicker = Model.Value<IEnumerable<MediaWithCrops>>("partnersSectionLogos");
+        foreach (var entry in typedMultiMediaPicker)
+        {
+            <img src="@entry.MediaUrl()" alt="@entry.Value("alt")" />
+        }
+    }
+</section>

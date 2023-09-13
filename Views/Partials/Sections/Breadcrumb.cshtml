@@ -1,0 +1,26 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using Umbraco.Cms.Core.Routing
+@using Umbraco.Extensions
+
+@inject IPublishedUrlProvider PublishedUrlProvider
+
+<section class="generic-section-hero">
+  <div class="container">
+    @{ 
+        var selection = Model.Ancestors().ToArray(); 
+    
+        if (selection?.Length > 0)
+        {
+            @* For each page in the ancestors collection which have been ordered by Level (so we start with the highest top node first) *@
+            @foreach (var item in selection.OrderBy(x => x.Level))
+            {
+                <a href="@item.Url(PublishedUrlProvider)">@item.Name</a> <span class="divider">/</span>
+            }
+    
+            @* Display the current page as the last item in the list *@
+            <span>@Model.Name</span>
+        }
+    }
+    <h1>@Model.Value("pageTitle")</h1>
+  </div>
+</section>
