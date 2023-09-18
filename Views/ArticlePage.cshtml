@@ -30,12 +30,10 @@
             @Model.Value("articleBody")
 
             <ul class="tags">
-                <li>Digitalization</li>
-                <li>School</li>
-                <li>IT</li>
-                <li>Design</li>
-                <li>Work</li>
-                <li>Tech</li>
+                @foreach (var tag in Model.Value<IEnumerable<string>>("articleTags"))
+                {
+                    <li>@tag</li>
+                }
             </ul>
         </article>
 
