@@ -664,6 +664,10 @@ button {
   font-size: 1.25rem;
   font-weight: 700;
 }
+.home-section-articles img {
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
 
 .home-section-newsletter {
   padding-block: 6rem;

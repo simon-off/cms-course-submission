@@ -8,12 +8,12 @@
 <a href="@Model.Url()">
     <article>
         <div class="date">
-            <span>25</span><br />
-            Mar
+            <span>@Model.CreateDate.ToString("dd")</span><br />
+            @Model.CreateDate.ToString("MMM")
         </div>
         <img src="@image.Url()" alt="@image.Value("alt")" />
-        <p class="tag">Business</p>
+        <p class="tag">@Model.Value("articleCategory")</p>
         <h4>@Model.Value("articleTitle")</h4>
-        <p>@Model.Value("articleBody")</p>
+        <p>@Html.Truncate(Model.Value("articleBody").ToString(), 40, true)</p>
     </article>
 </a>
