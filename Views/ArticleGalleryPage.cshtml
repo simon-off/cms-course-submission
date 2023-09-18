@@ -3,6 +3,22 @@
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
     Layout = "_Layout.cshtml";
+    
+    var itemsPerPage = 6;
+    var pageNumber = 1;
+    
+    if (!int.TryParse(Context.Request.Query["page"], out pageNumber))
+    {
+        pageNumber = 1;
+    }
+    
+    var selection = Umbraco.Content(Guid.Parse("06219512-9050-4a05-a56f-0fbb38cec75d"))
+        .ChildrenOfType("articlePage")
+        .Where(x => x.IsVisible())
+        .OrderByDescending(x => x.CreateDate);
+        
+    var totalItems = selection?.Count() ?? 0;
+    var pagedItems = selection?.Skip((pageNumber - 1) * itemsPerPage).Take(itemsPerPage);
 }
 
 <partial name="Sections/Breadcrumb" />
@@ -14,19 +30,15 @@
     </div>
     <div class="gallery">
 
-        @{
-            var selection = Umbraco.Content(Guid.Parse("06219512-9050-4a05-a56f-0fbb38cec75d"))
-            .ChildrenOfType("articlePage")
-            .Where(x => x.IsVisible())
-            .OrderByDescending(x => x.CreateDate);
-        }
-
-        @foreach (var item in selection)
+        @foreach (var item in pagedItems)
         {
             <partial name="Components/ArticlePreview" , model="item" />
         }
 
     </div>
+    
+    <a href="?page=2" >PAGINERING HÄR</a>
+    
 </section>
 
 <partial name="Sections/Newsletter" />

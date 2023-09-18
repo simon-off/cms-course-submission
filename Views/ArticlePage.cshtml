@@ -3,16 +3,18 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ArticlePage>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @using Umbraco.Cms.Core.Services;
+@using System.Globalization;
 @inject IUserService UserService;
 @{
     Layout = "_Layout.cshtml";
+    var textinfo = new CultureInfo("en-US", false).TextInfo;
 }
 
 <partial name="Sections/Breadcrumb" />
 
 <section class="article-section-main container">
     <h2 class="text-subtitle">
-        @Model.Value("articleTitle")
+        @Model.Name
     </h2>
     <p class="article-info">
         @Model.CreateDate.ToString("MMM dd, yyyy")<span></span>@Model.Value("articleCategory")<span></span>@Model.CreatorName(UserService)
@@ -27,14 +29,16 @@
                     <img src="@typedMediaPickerSingle.MediaUrl()" alt="@typedMediaPickerSingle.Value("alt")" />
                 }
             }
+            
             @Model.Value("articleBody")
 
             <ul class="tags">
                 @foreach (var tag in Model.Value<IEnumerable<string>>("articleTags"))
                 {
-                    <li>@tag</li>
+                    <li>@textinfo.ToTitleCase(tag.ToLower())</li>
                 }
             </ul>
+            
         </article>
 
         <aside>
@@ -46,30 +50,35 @@
                 <h3>Recent Posts</h3>
 
                 @{
-                    var selection = Umbraco.Content(Guid.Parse("06219512-9050-4a05-a56f-0fbb38cec75d"))
+                    var recentSelection = Umbraco.Content(Guid.Parse("06219512-9050-4a05-a56f-0fbb38cec75d"))
                     .ChildrenOfType("articlePage")
                     .Where(x => x.IsVisible())
                     .OrderByDescending(x => x.CreateDate)
                     .Take(4);
                 }
-
-                @foreach (var item in selection)
+                @foreach (var item in recentSelection)
                 {
                     <a href="@item.Url()">
-                        <span>@item.Value("articleTitle")</span>
-                        Jan 14, 2020
+                        <span>@item.Name</span>
+                        @item.CreateDate.ToString("MMM dd, yyyy")
                     </a>
                 }
 
             </div>
             <div class="categories">
                 <h3>Categories</h3>
-                <a href="#"><span>Technology - </span>20 Posts</a>
-                <a href="#"><span>Freelancing - </span>7 Posts</a>
-                <a href="#"><span>Writing - </span>16 Posts</a>
-                <a href="#"><span>Marketing - </span>11 Posts</a>
-                <a href="#"><span>Business - </span>35 Posts</a>
-                <a href="#"><span>Education - </span>14 Posts</a>
+                
+                @{
+                	var categorySelection = Umbraco.Content(Guid.Parse("06219512-9050-4a05-a56f-0fbb38cec75d"))
+                    .ChildrenOfType("articlePage")
+                    .Where(x => x.IsVisible())
+                    .GroupBy(x => x.Value("articleCategory"));
+                }
+                @foreach (var category in categorySelection)
+                {
+                    <a href="#"><span>@category.Key - </span>@category.Count() Posts</a>
+                }
+                
             </div>
         </aside>
     </div>

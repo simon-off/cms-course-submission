@@ -13,7 +13,7 @@
         </div>
         <img src="@image.Url()" alt="@image.Value("alt")" />
         <p class="tag">@Model.Value("articleCategory")</p>
-        <h4>@Model.Value("articleTitle")</h4>
+        <h4>@Model.Name</h4>
         <p>@Html.Truncate(Model.Value("articleBody").ToString(), 40, true)</p>
     </article>
 </a>
