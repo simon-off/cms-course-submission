@@ -2,79 +2,81 @@
 @using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ArticlePage>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.Services;
+@inject IUserService UserService;
 @{
-	Layout = "_Layout.cshtml";
+    Layout = "_Layout.cshtml";
 }
 
-<partial name="Sections/Breadcrumb"/>
+<partial name="Sections/Breadcrumb" />
 
 <section class="article-section-main container">
-  <h2 class="text-subtitle">
-    @Model.Value("articleTitle")
-  </h2>
-  <p class="article-info">
-    Mar 25, 2023<span></span>Business<span></span>Kimberly Hansen
-  </p>
-  <div class="content">
-    <article>
-        
-        @{
-            var typedMediaPickerSingle = Model.Value<MediaWithCrops>("articleImage");
-            if (typedMediaPickerSingle != null)
-            {
-                <img src="@typedMediaPickerSingle.MediaUrl()" alt="@typedMediaPickerSingle.Value("alt")" />
+    <h2 class="text-subtitle">
+        @Model.Value("articleTitle")
+    </h2>
+    <p class="article-info">
+        @Model.CreateDate.ToString("MMM dd, yyyy")<span></span>@Model.Value("articleCategory")<span></span>@Model.CreatorName(UserService)
+    </p>
+    <div class="content">
+        <article>
+
+            @{
+                var typedMediaPickerSingle = Model.Value<MediaWithCrops>("articleImage");
+                if (typedMediaPickerSingle != null)
+                {
+                    <img src="@typedMediaPickerSingle.MediaUrl()" alt="@typedMediaPickerSingle.Value("alt")" />
+                }
             }
-        }
-        @Model.Value("articleBody")
-        
-      <ul class="tags">
-        <li>Digitalization</li>
-        <li>School</li>
-        <li>IT</li>
-        <li>Design</li>
-        <li>Work</li>
-        <li>Tech</li>
-      </ul>
-    </article>
-    
-    <aside>
-      <div class="searchbar">
-        <input type="text" placeholder="Type to search..." />
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="recent">
-        <h3>Recent Posts</h3>
-        
-        @{
-        	var selection = Umbraco.Content(Guid.Parse("06219512-9050-4a05-a56f-0fbb38cec75d"))
-            .ChildrenOfType("articlePage")
-            .Where(x => x.IsVisible())
-            .OrderByDescending(x => x.CreateDate)
-            .Take(4);
-        }
-    
-    	@foreach (var item in selection)
-    	{
-            <a href="@item.Url()">
-              <span>@item.Value("articleTitle")</span>
-              Jan 14, 2020
-            </a>
-    	}
-        
-      </div>
-      <div class="categories">
-        <h3>Categories</h3>
-        <a href="#"><span>Technology - </span>20 Posts</a>
-        <a href="#"><span>Freelancing - </span>7 Posts</a>
-        <a href="#"><span>Writing - </span>16 Posts</a>
-        <a href="#"><span>Marketing - </span>11 Posts</a>
-        <a href="#"><span>Business - </span>35 Posts</a>
-        <a href="#"><span>Education - </span>14 Posts</a>
-      </div>
-    </aside>
-  </div>
+            @Model.Value("articleBody")
+
+            <ul class="tags">
+                <li>Digitalization</li>
+                <li>School</li>
+                <li>IT</li>
+                <li>Design</li>
+                <li>Work</li>
+                <li>Tech</li>
+            </ul>
+        </article>
+
+        <aside>
+            <div class="searchbar">
+                <input type="text" placeholder="Type to search..." />
+                <i class="fa fa-search"></i>
+            </div>
+            <div class="recent">
+                <h3>Recent Posts</h3>
+
+                @{
+                    var selection = Umbraco.Content(Guid.Parse("06219512-9050-4a05-a56f-0fbb38cec75d"))
+                    .ChildrenOfType("articlePage")
+                    .Where(x => x.IsVisible())
+                    .OrderByDescending(x => x.CreateDate)
+                    .Take(4);
+                }
+
+                @foreach (var item in selection)
+                {
+                    <a href="@item.Url()">
+                        <span>@item.Value("articleTitle")</span>
+                        Jan 14, 2020
+                    </a>
+                }
+
+            </div>
+            <div class="categories">
+                <h3>Categories</h3>
+                <a href="#"><span>Technology - </span>20 Posts</a>
+                <a href="#"><span>Freelancing - </span>7 Posts</a>
+                <a href="#"><span>Writing - </span>16 Posts</a>
+                <a href="#"><span>Marketing - </span>11 Posts</a>
+                <a href="#"><span>Business - </span>35 Posts</a>
+                <a href="#"><span>Education - </span>14 Posts</a>
+            </div>
+        </aside>
+    </div>
 </section>
 
 <div class="bg-beige">
-  <partial name="Sections/Articles"/>
+    <partial name="Sections/Articles" />
 </div>

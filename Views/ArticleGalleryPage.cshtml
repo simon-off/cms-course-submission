@@ -2,31 +2,31 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ArticleGalleryPage>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
-	Layout = "_Layout.cshtml";
+    Layout = "_Layout.cshtml";
 }
 
-<partial name="Sections/Breadcrumb"/>
+<partial name="Sections/Breadcrumb" />
 
 <section class="home-section-articles container">
-  <h2 class="text-accent">Articles & News</h2>
-  <div class="heading">
-    <h3 class="text-subtitle">@Model.Value("articleGalleryHeading")</h3>
-  </div>
-  <div class="gallery">
-      
-    @{
-    	var selection = Umbraco.Content(Guid.Parse("06219512-9050-4a05-a56f-0fbb38cec75d"))
-        .ChildrenOfType("articlePage")
-        .Where(x => x.IsVisible())
-        .OrderByDescending(x => x.CreateDate);
-    }
-    
-	@foreach (var item in selection)
-	{
-        <partial name="Components/ArticlePreview", model="item"/>
-	}
+    <h2 class="text-accent">@Model.Value("pageTitle")</h2>
+    <div class="heading">
+        <h3 class="text-subtitle">@Model.Value("articleGalleryHeading")</h3>
+    </div>
+    <div class="gallery">
 
-  </div>
+        @{
+            var selection = Umbraco.Content(Guid.Parse("06219512-9050-4a05-a56f-0fbb38cec75d"))
+            .ChildrenOfType("articlePage")
+            .Where(x => x.IsVisible())
+            .OrderByDescending(x => x.CreateDate);
+        }
+
+        @foreach (var item in selection)
+        {
+            <partial name="Components/ArticlePreview" , model="item" />
+        }
+
+    </div>
 </section>
 
 <partial name="Sections/Newsletter" />

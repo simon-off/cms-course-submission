@@ -6,14 +6,14 @@
 }
 
 <a href="@Model.Url()">
-  <article>
-    <div class="date">
-      <span>25</span><br />
-      Mar
-    </div>
-    <img src="@image.Url()" alt="Happy woman in office" />
-    <p class="tag">Business</p>
-    <h4>@Model.Value("articleTitle")</h4>
-    <p>@Model.Value("articleBody")</p>
-  </article>
+    <article>
+        <div class="date">
+            <span>25</span><br />
+            Mar
+        </div>
+        <img src="@image.Url()" alt="@image.Value("alt")" />
+        <p class="tag">Business</p>
+        <h4>@Model.Value("articleTitle")</h4>
+        <p>@Model.Value("articleBody")</p>
+    </article>
 </a>
