@@ -38,9 +38,31 @@
     </div>
 
     <nav>
-        <a class="button-pagination" href="?page=2"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
-        <a class="button-pagination active" href="?page=2">2</a>
-        <a class="button-pagination" href="?page=2"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+        @if (pageNumber > 1)
+        {
+            <a class="button-pagination" href="?page=@(pageNumber - 1)">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            </a>
+        }
+
+        @for (int i = 1; i <= Math.Ceiling((decimal)totalItems / itemsPerPage); i++)
+        {
+            if (i == pageNumber)
+            {
+                <a href="?page=#" class="button-pagination active">@i</a>
+            }
+            else
+            {
+                <a href="?page=@i" class="button-pagination">@i</a>
+            }
+        }
+
+        @if (pageNumber < Math.Ceiling((decimal)totalItems / itemsPerPage))
+        {
+            <a class="button-pagination" href="?page=@(pageNumber + 1)">
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </a>
+        }
     </nav>
 
 </section>

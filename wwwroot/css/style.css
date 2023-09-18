@@ -313,7 +313,7 @@ button {
 .home-section-hero {
   background-color: var(--color-beige);
   padding-top: 2rem;
-  background-image: url("images/backgrounds/white-swirl-left.svg");
+  background-image: url("/images/backgrounds/white-swirl-left.svg");
   background-position: bottom -90px left -260px;
   background-repeat: no-repeat;
 }
@@ -430,7 +430,7 @@ button {
 .home-section-services {
   background-color: var(--color-beige);
   padding-block: 6rem;
-  background-image: url("images/backgrounds/white-swirl-right.svg");
+  background-image: url("/images/backgrounds/white-swirl-right.svg");
   background-position: bottom -90px right -340px;
   background-repeat: no-repeat;
 }
@@ -709,7 +709,7 @@ button {
   background-color: var(--color-beige);
   padding-top: 4rem;
   padding-bottom: 6rem;
-  background-image: url("images/backgrounds/white-swirl-left.svg");
+  background-image: url("/images/backgrounds/white-swirl-left.svg");
   background-position: bottom -90px left -260px;
   background-repeat: no-repeat;
   text-align: center;
