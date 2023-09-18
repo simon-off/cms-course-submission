@@ -180,6 +180,21 @@ button {
 .button-inverted i {
   color: white;
 }
+.button-pagination {
+  border: 1px solid var(--color-text);
+  border-radius: 4px;
+  width: 48px;
+  aspect-ratio: 1/1;
+  display: grid;
+  place-items: center;
+}
+.button-pagination:hover {
+  background-color: var(--color-beige);
+}
+.button-pagination.active {
+  background-color: var(--color-text);
+  color: white;
+}
 
 .header-main {
   background-color: var(--color-beige);
@@ -298,7 +313,7 @@ button {
 .home-section-hero {
   background-color: var(--color-beige);
   padding-top: 2rem;
-  background-image: url("/static/images/backgrounds/white-swirl-left.svg");
+  background-image: url("images/backgrounds/white-swirl-left.svg");
   background-position: bottom -90px left -260px;
   background-repeat: no-repeat;
 }
@@ -351,7 +366,7 @@ button {
   display: grid;
   grid-template-columns: 1fr 1fr;
   -moz-column-gap: 4rem;
-       column-gap: 4rem;
+  column-gap: 4rem;
   row-gap: 2rem;
 }
 .home-section-features .gallery i {
@@ -415,7 +430,7 @@ button {
 .home-section-services {
   background-color: var(--color-beige);
   padding-block: 6rem;
-  background-image: url("/static/images/backgrounds/white-swirl-right.svg");
+  background-image: url("images/backgrounds/white-swirl-right.svg");
   background-position: bottom -90px right -340px;
   background-repeat: no-repeat;
 }
@@ -651,6 +666,11 @@ button {
   flex-direction: column;
   gap: 1rem;
 }
+.home-section-articles img {
+  aspect-ratio: 16/9;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
 .home-section-articles .date {
   background-color: var(--color-yellow);
   position: absolute;
@@ -664,9 +684,11 @@ button {
   font-size: 1.25rem;
   font-weight: 700;
 }
-.home-section-articles img {
-  aspect-ratio: 16/9;
-  object-fit: cover;
+.home-section-articles nav {
+  padding-top: 3rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .home-section-newsletter {
@@ -687,7 +709,7 @@ button {
   background-color: var(--color-beige);
   padding-top: 4rem;
   padding-bottom: 6rem;
-  background-image: url("/static/images/backgrounds/white-swirl-left.svg");
+  background-image: url("images/backgrounds/white-swirl-left.svg");
   background-position: bottom -90px left -260px;
   background-repeat: no-repeat;
   text-align: center;
@@ -748,9 +770,9 @@ button {
 .contact-section-map img {
   width: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   -o-object-position: 50% 40%;
-     object-position: 50% 40%;
+  object-position: 50% 40%;
 }
 
 .bg-beige {
