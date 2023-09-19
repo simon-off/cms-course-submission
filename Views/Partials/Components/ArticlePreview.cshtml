@@ -2,7 +2,7 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ArticlePage>
 
 @{
-    var image = Model.Value<IPublishedContent>("articleImage");
+    var image = Model.ArticleImage;
 }
 
 <a href="@Model.Url()">
@@ -12,8 +12,8 @@
             @Model.CreateDate.ToString("MMM")
         </div>
         <img src="@image.Url()" alt="@image.Value("alt")" />
-        <p class="tag">@Model.Value("articleCategory")</p>
+        <p class="tag">@Model.ArticleCategory</p>
         <h4>@Model.Name</h4>
-        <p>@Html.Truncate(Model.Value("articleBody").ToString(), 40, true)</p>
+        <p>@Html.Truncate(Model.ArticleBody.ToString(), 40, true)</p>
     </article>
 </a>
