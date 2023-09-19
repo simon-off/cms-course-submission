@@ -11,7 +11,8 @@
 
             if (selection?.Length > 0)
             {
-                @* For each page in the ancestors collection which have been ordered by Level (so we start with the highest top node first) *@
+                @* For each page in the ancestors collection which have been ordered by Level (so we start with the highest top
+        node first) *@
                 @foreach (var item in selection.OrderBy(x => x.Level))
                 {
                     <a href="@item.Url(PublishedUrlProvider)">@item.Name</a> <span class="divider">/</span>

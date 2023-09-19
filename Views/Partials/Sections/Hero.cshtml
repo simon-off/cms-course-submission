@@ -1,5 +1,6 @@
 ﻿@using Umbraco.Cms.Core.Models
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.HomePage>
 
 <section class="home-section-hero">
     <div class="container">
@@ -15,10 +16,9 @@
             </div>
         </div>
         @{
-            var typedMediaPickerSingle = Model.Value<MediaWithCrops>("heroSectionImage");
-            if (typedMediaPickerSingle != null)
+            if (Model.HeroSectionImage is MediaWithCrops mediaEntry)
             {
-                <img src="@typedMediaPickerSingle.MediaUrl()" alt="@typedMediaPickerSingle.Value("alt")" />
+                <img src="@mediaEntry.MediaUrl()" alt="@mediaEntry.Value("alt")" />
             }
         }
     </div>
