@@ -1,0 +1,102 @@
+body {
+  color: var(--color-text);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: normal;
+}
+
+p {
+  color: var(--color-text-light);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: auto;
+  padding-inline: 1rem;
+}
+.container-large {
+  max-width: var(--max-width-large);
+  margin: auto;
+}
+
+.bg-beige {
+  background-color: var(--color-beige);
+}
+
+.current {
+  position: relative;
+  &::after {
+    position: absolute;
+    content: "";
+    height: 2px;
+    left: 1.5rem;
+    right: 1.5rem;
+    bottom: -4px;
+    background-color: var(--color-text);
+  }
+}
+
+input,
+textarea {
+  padding: 0.875rem 2.25rem;
+  border-radius: 2rem;
+  border: none;
+  background-color: white;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+.button {
+  padding: 0.875rem 2.25rem;
+  border-radius: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  i {
+    rotate: -45deg;
+    color: var(--color-text-light);
+  }
+  &-primary {
+    background-color: var(--color-yellow);
+  }
+  &-secondary {
+    border: 1px solid var(--color-text-light);
+  }
+  &-inverted {
+    background-color: var(--color-text);
+    color: white;
+    i {
+      color: white;
+    }
+  }
+  &-pagination {
+    border: 1px solid var(--color-text);
+    border-radius: 4px;
+    width: 48px;
+    aspect-ratio: 1/1;
+    display: grid;
+    place-items: center;
+    &:hover {
+      background-color: var(--color-beige);
+    }
+    &.active {
+      background-color: var(--color-text);
+      color: white;
+    }
+  }
+}

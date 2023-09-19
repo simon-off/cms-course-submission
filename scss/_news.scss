@@ -1,0 +1,12 @@
+.generic-section-hero {
+  background-color: var(--color-beige);
+  padding-top: 4rem;
+  padding-bottom: 6rem;
+  background-image: url("/images/backgrounds/white-swirl-left.svg");
+  background-position: bottom -90px left -260px;
+  background-repeat: no-repeat;
+  text-align: center;
+  h1 {
+    font-size: 4rem;
+  }
+}
