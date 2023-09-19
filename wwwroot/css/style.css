@@ -65,7 +65,9 @@ h6 {
   --color-text-light: #555;
   --color-text-inverted: #c2c6cd;
   --color-beige: #f0efe9;
+  --color-beige-dark: #dcdad1;
   --color-yellow: #f9d783;
+  --color-yellow-dark: #e9c873;
   --color-orange: #f94d1c;
   --color-dark-blue: #0e1021;
   --color-light-blue: #beebff;
@@ -162,6 +164,7 @@ button {
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
+  transition: background-color 100ms ease;
 }
 .button i {
   rotate: -45deg;
@@ -170,8 +173,14 @@ button {
 .button-primary {
   background-color: var(--color-yellow);
 }
+.button-primary:hover, .button-primary:focus {
+  background-color: var(--color-yellow-dark);
+}
 .button-secondary {
   border: 1px solid var(--color-text-light);
+}
+.button-secondary:hover, .button-secondary:focus {
+  background-color: var(--color-beige-dark);
 }
 .button-inverted {
   background-color: var(--color-text);
@@ -179,6 +188,12 @@ button {
 }
 .button-inverted i {
   color: white;
+}
+.button-inverted:hover, .button-inverted:focus {
+  background-color: var(--color-text-light);
+}
+.button-special:hover i, .button-special:focus i {
+  background-color: var(--color-beige-dark);
 }
 .button-pagination {
   border: 1px solid var(--color-text);

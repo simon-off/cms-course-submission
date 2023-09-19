@@ -67,21 +67,42 @@ button {
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
+  transition: background-color 100ms ease;
   i {
     rotate: -45deg;
     color: var(--color-text-light);
   }
   &-primary {
     background-color: var(--color-yellow);
+    &:hover,
+    &:focus {
+      background-color: var(--color-yellow-dark);
+    }
   }
   &-secondary {
     border: 1px solid var(--color-text-light);
+    &:hover,
+    &:focus {
+      background-color: var(--color-beige-dark);
+    }
   }
   &-inverted {
     background-color: var(--color-text);
     color: white;
     i {
       color: white;
+    }
+    &:hover,
+    &:focus {
+      background-color: var(--color-text-light);
+    }
+  }
+  &-special {
+    &:hover,
+    &:focus {
+      i {
+        background-color: var(--color-beige-dark);
+      }
     }
   }
   &-pagination {
