@@ -19,7 +19,7 @@ public class ContactController : SurfaceController
     }
 
     [HttpPost]
-    public async Task<IActionResult> Index(ContactForm contactForm)
+    public IActionResult Index(ContactForm contactForm)
     {
         if (!ModelState.IsValid || contactForm.Email.IsNullOrWhiteSpace() || contactForm.Message.IsNullOrWhiteSpace())
         {
