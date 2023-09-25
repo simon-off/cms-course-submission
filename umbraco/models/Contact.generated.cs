@@ -18,7 +18,7 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
-	/// <summary>Contact</summary>
+	/// <summary>Contact Page</summary>
 	[PublishedModel("contact")]
 	public partial class Contact : PublishedContentModel, IPageMetadata
 	{
@@ -48,6 +48,46 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		}
 
 		// properties
+
+		///<summary>
+		/// Contact Form Heading
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.1.1+6cdd561")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("contactFormHeading")]
+		public virtual string ContactFormHeading => this.Value<string>(_publishedValueFallback, "contactFormHeading");
+
+		///<summary>
+		/// Contact Info Address Lines
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.1.1+6cdd561")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("contactInfoAddressLines")]
+		public virtual global::System.Collections.Generic.IEnumerable<string> ContactInfoAddressLines => this.Value<global::System.Collections.Generic.IEnumerable<string>>(_publishedValueFallback, "contactInfoAddressLines");
+
+		///<summary>
+		/// Contact Info Email Addresses
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.1.1+6cdd561")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("contactInfoEmailAddresses")]
+		public virtual global::System.Collections.Generic.IEnumerable<string> ContactInfoEmailAddresses => this.Value<global::System.Collections.Generic.IEnumerable<string>>(_publishedValueFallback, "contactInfoEmailAddresses");
+
+		///<summary>
+		/// Contact Info Phone Numbers
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.1.1+6cdd561")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("contactInfoPhoneNumbers")]
+		public virtual global::System.Collections.Generic.IEnumerable<string> ContactInfoPhoneNumbers => this.Value<global::System.Collections.Generic.IEnumerable<string>>(_publishedValueFallback, "contactInfoPhoneNumbers");
+
+		///<summary>
+		/// Contact Map IFrame Src
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.1.1+6cdd561")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("contactMapIFrameSrc")]
+		public virtual string ContactMapIframeSrc => this.Value<string>(_publishedValueFallback, "contactMapIFrameSrc");
 
 		///<summary>
 		/// Page Description

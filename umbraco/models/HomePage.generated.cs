@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>Home Page</summary>
 	[PublishedModel("homePage")]
-	public partial class HomePage : PublishedContentModel, IPageMetadata
+	public partial class HomePage : PublishedContentModel, IHeaderContent, IPageMetadata
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -48,6 +48,22 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		}
 
 		// properties
+
+		///<summary>
+		/// Hero Section Button Href
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.1.1+6cdd561")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("heroSectionButtonHref")]
+		public virtual string HeroSectionButtonHref => this.Value<string>(_publishedValueFallback, "heroSectionButtonHref");
+
+		///<summary>
+		/// Hero Section Button Label
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.1.1+6cdd561")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("heroSectionButtonLabel")]
+		public virtual string HeroSectionButtonLabel => this.Value<string>(_publishedValueFallback, "heroSectionButtonLabel");
 
 		///<summary>
 		/// Hero Section Heading
@@ -80,6 +96,30 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("partnersSectionLogos")]
 		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Core.Models.MediaWithCrops> PartnersSectionLogos => this.Value<global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Core.Models.MediaWithCrops>>(_publishedValueFallback, "partnersSectionLogos");
+
+		///<summary>
+		/// Header Email Address
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.1.1+6cdd561")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("headerEmailAddress")]
+		public virtual string HeaderEmailAddress => global::Umbraco.Cms.Web.Common.PublishedModels.HeaderContent.GetHeaderEmailAddress(this, _publishedValueFallback);
+
+		///<summary>
+		/// Header Phone Number
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.1.1+6cdd561")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("headerPhoneNumber")]
+		public virtual string HeaderPhoneNumber => global::Umbraco.Cms.Web.Common.PublishedModels.HeaderContent.GetHeaderPhoneNumber(this, _publishedValueFallback);
+
+		///<summary>
+		/// Header Postal Address
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.1.1+6cdd561")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("headerPostalAddress")]
+		public virtual string HeaderPostalAddress => global::Umbraco.Cms.Web.Common.PublishedModels.HeaderContent.GetHeaderPostalAddress(this, _publishedValueFallback);
 
 		///<summary>
 		/// Page Description

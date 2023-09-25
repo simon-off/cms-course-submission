@@ -16,9 +16,9 @@
         <div class="content">
             <div class="top-bar">
                 <ul class="contact">
-                    <li><a href="tel:+46812147050"><i class="fa fa-phone"></i>+46 (8) 121 470 50</a></li>
-                    <li><a href="mailto:info@crito.com"><i class="fa fa-envelope"></i>info@crito.com</a></li>
-                    <li><a href="#"><i class="fa fa-map-marker"></i>Sveavägen 31, 111 34 STOCKHOLM</a></li>
+                    <li><a href="tel:+46812147050"><i class="fa fa-phone"></i>@Model.Value("headerPhoneNumber", fallback: Fallback.ToAncestors)</a></li>
+                    <li><a href="mailto:info@crito.com"><i class="fa fa-envelope"></i>@Model.Value("headerEmailAddress", fallback: Fallback.ToAncestors)</a></li>
+                    <li><a href="#"><i class="fa fa-map-marker"></i>@Model.Value("headerPostalAddress", fallback: Fallback.ToAncestors)</a></li>
                 </ul>
                 <ul class="socials">
                     <li><a href="#" target="_blank"><i class="fa fa-facebook-square" aria-label="facebook"></i></a></li>
