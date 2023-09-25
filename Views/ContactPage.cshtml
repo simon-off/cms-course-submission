@@ -1,8 +1,11 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+﻿@using crito.Models;
+@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Contact>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
 	Layout = "_Layout.cshtml";
+
+	var contactForm = new ContactForm();
 }
 
 <partial name="Sections/Breadcrumb" />
@@ -40,11 +43,12 @@
 			</div>
 		</article>
 	</div>
-	<form action="">
+	<form asp-controller="Contact" asp-action="index" method="post" novalidate>
 		<h2 class="text-subtitle">@Model.Value("contactFormHeading")</h2>
-		<input type="text" placeholder="Name*" required />
-		<input type="text" placeholder="Email*" required />
-		<textarea cols="30" rows="10" placeholder="Your Message*" required></textarea>
+		<div asp-validation-summary="ModelOnly"></div>
+		<input asp-for="@contactForm.Name" type="text" placeholder="Name*" required />
+		<input asp-for="@contactForm.Email" type="text" placeholder="Email*" required />
+		<textarea asp-for="@contactForm.Message" cols="30" rows="10" placeholder="Your Message*" required></textarea>
 		<button type="submit" class="button button-primary">
 			Send Message<i class="fa fa-arrow-right"></i>
 		</button>
