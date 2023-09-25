@@ -1,3 +1,4 @@
+using crito.Models;
 using Microsoft.AspNetCore.Mvc;
 using Umbraco.Cms.Core.Cache;
 using Umbraco.Cms.Core.Logging;
@@ -17,7 +18,7 @@ public class ContactController : SurfaceController
     }
 
     [HttpPost]
-    public IActionResult Index()
+    public IActionResult Index(ContactForm contactForm)
     {
         if (!ModelState.IsValid)
         {
