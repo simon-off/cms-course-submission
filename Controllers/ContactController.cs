@@ -1,4 +1,5 @@
 using crito.Models;
+using crito.Services;
 using Microsoft.AspNetCore.Mvc;
 using Umbraco.Cms.Core.Cache;
 using Umbraco.Cms.Core.Logging;
@@ -18,13 +19,22 @@ public class ContactController : SurfaceController
     }
 
     [HttpPost]
-    public IActionResult Index(ContactForm contactForm)
+    public async Task<IActionResult> Index(ContactForm contactForm)
     {
-        if (!ModelState.IsValid)
+        if (!ModelState.IsValid || contactForm.Email.IsNullOrWhiteSpace() || contactForm.Message.IsNullOrWhiteSpace())
         {
             return CurrentUmbracoPage();
         }
 
-        return RedirectToCurrentUmbracoPage();
+        // Instantiate MailService
+        using var mail = new MailService("no-reply@crito.com", "smtp.crito.com", 587, "contact@crito.com", "ChangeThis123!");
+
+        // To sender
+        await mail.SendAsync(contactForm.Email, "Thanks for reaching out!", "We'll get back to you as soon as possible.");
+
+        // To us
+        await mail.SendAsync("contact@crito.com", $"{contactForm.Name} sent a message.", contactForm.Message);
+
+        return LocalRedirect(contactForm.RedirectUrl);
     }
 }

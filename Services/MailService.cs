@@ -1,3 +1,4 @@
+using System;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using MimeKit;
@@ -5,7 +6,7 @@ using MimeKit.Text;
 
 namespace crito.Services;
 
-public class MailService
+public class MailService : IDisposable
 {
     private string _from;
     private string _smtp;
@@ -20,6 +21,12 @@ public class MailService
         _port = port;
         _username = username;
         _password = password;
+    }
+
+    public void Dispose()
+    {
+        Dispose();
+        GC.SuppressFinalize(this);
     }
 
     public async Task SendAsync(string to, string subject, string body)

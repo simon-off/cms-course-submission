@@ -28,17 +28,23 @@
   }
   form {
     background-color: var(--color-beige);
-    text-align: center;
     display: flex;
     flex-direction: column;
     gap: 1rem;
     padding: 6rem;
+  }
+  h2 {
+    text-align: center;
   }
   textarea {
     resize: vertical;
   }
   button {
     margin-top: 2rem;
+  }
+  span {
+    color: #aa0000;
+    padding-left: 2rem;
   }
 }
 

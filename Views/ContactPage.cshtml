@@ -43,16 +43,20 @@
 			</div>
 		</article>
 	</div>
-	<form asp-controller="Contact" asp-action="index" method="post" novalidate>
+	@using (Html.BeginUmbracoForm("Index", "Contact", FormMethod.Post))
+	{
 		<h2 class="text-subtitle">@Model.Value("contactFormHeading")</h2>
 		<div asp-validation-summary="ModelOnly"></div>
-		<input asp-for="@contactForm.Name" type="text" placeholder="Name*" required />
-		<input asp-for="@contactForm.Email" type="text" placeholder="Email*" required />
-		<textarea asp-for="@contactForm.Message" cols="30" rows="10" placeholder="Your Message*" required></textarea>
+		<span asp-validation-for="@contactForm.Name"></span>
+		<input asp-for="@contactForm.Name" type="text" placeholder="Name*" />
+		<span asp-validation-for="@contactForm.Email"></span>
+		<input asp-for="@contactForm.Email" type="text" placeholder="Email*" />
+		<span asp-validation-for="@contactForm.Message"></span>
+		<textarea asp-for="@contactForm.Message" cols="30" rows="10" placeholder="Your Message*"></textarea>
 		<button type="submit" class="button button-primary">
 			Send Message<i class="fa fa-arrow-right"></i>
 		</button>
-	</form>
+	}
 </section>
 <section class="contact-section-map">
 	<iframe src="@Model.Value("contactMapIFrameSrc")" width="100%" height="620" style="border:0;" allowfullscreen=""
