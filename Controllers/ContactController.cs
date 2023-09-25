@@ -26,6 +26,8 @@ public class ContactController : SurfaceController
             return CurrentUmbracoPage();
         }
 
+        // THIS IS WHERE THE MAGIC HAPPENS
+        /*
         // Instantiate MailService
         using var mail = new MailService("no-reply@crito.com", "smtp.crito.com", 587, "contact@crito.com", "ChangeThis123!");
 
@@ -34,7 +36,8 @@ public class ContactController : SurfaceController
 
         // To us
         await mail.SendAsync("contact@crito.com", $"{contactForm.Name} sent a message.", contactForm.Message);
+        */
 
-        return LocalRedirect(contactForm.RedirectUrl);
+        return LocalRedirect("/contact");
     }
 }

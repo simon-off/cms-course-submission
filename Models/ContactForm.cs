@@ -13,6 +13,4 @@ public class ContactForm
 
     [Required]
     public string? Message { get; set; }
-
-    public string RedirectUrl { get; set; } = "/";
 }
