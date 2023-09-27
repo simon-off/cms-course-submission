@@ -38,6 +38,15 @@ public class ContactController : SurfaceController
         await mail.SendAsync("contact@crito.com", $"{contactForm.Name} sent a message.", contactForm.Message);
         */
 
+        // Log something nice in the console
+        Console.ForegroundColor = ConsoleColor.DarkBlue;
+        Console.WriteLine();
+        Console.WriteLine($"{contactForm.Name} sent a message from {contactForm.Email}:");
+        Console.ForegroundColor = ConsoleColor.DarkGreen;
+        Console.WriteLine(contactForm.Message);
+        Console.WriteLine();
+
+
         return LocalRedirect("/contact");
     }
 }
